@@ -24,3 +24,33 @@
 @import "~@ionic/angular/css/text-alignment.css";
 @import "~@ionic/angular/css/text-transformation.css";
 @import "~@ionic/angular/css/flex-utils.css";
+
+
+/** Custom Css */
+
+.infinite-scroll-loading {
+  .infinite-scroll-content-md {
+    .infinite-loading {
+      .infinite-loading-spinner {
+        ion-spinner {
+          color: var(--ion-color-primary) !important;
+        }
+      }
+    }
+  }
+}
+
+.refresher-active  {
+  .refresher-pulling {
+    .refresher-pulling-icon {
+      color: var(--ion-color-primary) !important;
+    }
+  }
+  .refresher-refreshing {
+    .refresher-refreshing-icon {
+      ion-spinner {
+        color: var(--ion-color-primary) !important;
+      }
+    }
+  }
+}

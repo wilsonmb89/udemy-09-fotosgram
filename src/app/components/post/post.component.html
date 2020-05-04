@@ -1,0 +1,33 @@
+<div class="post">
+  <ion-item lines="none">
+    <ion-avatar slot="start">
+      <img src="/assets/avatars/{{ post.usuario.avatar }}">
+    </ion-avatar>
+    <ion-label>
+      <h3>{{ post.usuario.nombre }}</h3>
+      <h5 style="margin-bottom: 0;">{{ post.usuario.email }}</h5>
+      <small *ngIf="!!post.coords" class="link-ubicacion" (click)="openMapModal()">Ver Ubicación</small>
+    </ion-label>
+  </ion-item>
+  <ion-slides class="single" *ngIf="post.img.length === 1" [options]="slideSingleOpts">
+    <ion-slide *ngFor="let img of post.img"
+                class="image-slide"
+                [style]="((img.fileSystemName + '.' + img.extension) | postImage: post.usuario._id : post._id ) | domSanitizer">
+    </ion-slide>
+  </ion-slides>
+  <ion-slides class="default" *ngIf="post.img.length > 1" pager="true">
+    <ion-slide *ngFor="let img of post.img"
+                class="image-slide"
+                [style]="((img.fileSystemName + '.' + img.extension) | postImage: post.usuario._id : post._id ) | domSanitizer">
+    </ion-slide>
+  </ion-slides>
+  <ion-item lines="none">
+    <ion-icon slot="start" name="heart-outline"></ion-icon>
+    <ion-icon slot="end" name="bookmark-outline"></ion-icon>
+  </ion-item>
+  <ion-item lines="none">
+    <ion-label text-wrap>
+      {{ post.mensaje }}
+    </ion-label>
+  </ion-item>
+</div>

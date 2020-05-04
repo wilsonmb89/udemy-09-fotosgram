@@ -1,0 +1,32 @@
+<ion-header class="ion-no-border ion-padding">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-icon slot="icon-only" name="bonfire"></ion-icon>
+    </ion-buttons>
+    <ion-title>
+      FotosGram
+    </ion-title>
+    <ion-buttons slot="end">
+      <ion-icon slot="icon-only" name="exit-outline" (click)="logout()"></ion-icon>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content color="light">
+  <ion-refresher color="dark" slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content
+      pullingIcon="arrow-down-outline"
+      pullingText="Arrastre para actualizar"
+      refreshingSpinner="crescent"
+      refreshingText="Actualizando Posts...">
+    </ion-refresher-content>
+  </ion-refresher>
+  <app-posts [posts]="posts"></app-posts>
+  <ion-infinite-scroll #infiniteScrollPosts 
+                        threshold="150px" 
+                        (ionInfinite)="loadPostsNextPage($event)">
+  <ion-infinite-scroll-content loadinfSpinner="crescent"
+                              loadingText="Obteniendo más posts...">
+  </ion-infinite-scroll-content>                      
+</ion-infinite-scroll>
+</ion-content>
